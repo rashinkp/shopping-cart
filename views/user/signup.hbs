@@ -1,0 +1,200 @@
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .signup-container {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        .form-group input[type="password"] {
+            margin-bottom: 0;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .btn-signup-container {
+            text-align: center;
+        }
+
+        .btn-signup {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .btn-signup:hover {
+            background-color: #0056b3;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+
+<section class="content">
+
+    <div class="container mb-5">
+      <div class="signup-container">
+        <h2 class="signup-title">Signup</h2>
+        <form onsubmit="return validateForm()" action="/signup" method="POST" enctype="multipart/form-data">
+            <div class="form-row" style="display: flex;">
+                <div class="form-group col-md-6 me-1">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control"  id="firstName" placeholder="First Name" required
+                        onblur="validateField('firstName')" name="fname">
+                    <div class="error-message" id="errorFirstName"></div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required
+                        onblur="validateField('lastName')" name="sname">
+                    <div class="error-message" id="errorLastName"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" required
+                    onblur="validateField('email')" name="email">
+                <div class="error-message" id="errorEmail"></div>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" class="form-control" id="mobile" placeholder="Mobile Number" required
+                    onblur="validateField('mobile')" name="mobile">
+                <div class="error-message" id="errorMobile"></div>
+            </div>
+            <div class="form-row" style="display: flex;">
+                <div class="form-group col-md-6 me-1">
+                    <label for="birthdate">Birthdate</label>
+                    <input type="date" class="form-control" id="birthdate" required
+                        onblur="validateField('birthdate')" name="bday">
+                    <div class="error-message" id="errorBirthdate"></div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="sex">Sex</label>
+                    <select class="form-control" id="sex" required onblur="validateField('sex')" name="sex">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error-message" id="errorSex"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" required
+                    onblur="validateField('password')">
+                <div class="error-message" id="errorPassword"></div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+                    required onblur="validateField('confirmPassword')" name="password">
+                <div class="error-message" id="errorConfirmPassword"></div>
+            {{!-- <div class="form-group">
+        <label for="profileImage">Profile Image</label>
+        <input type="file" class="form-control" id="profileImage" name="profileImage">
+    </div> --}}
+            <div class="btn-signup-container">
+                <button type="submit" class="btn btn-signup">Signup</button>
+            </div>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="/login">Login</a></p>
+        </div>
+    </div>
+    </div>
+
+</section>
+
+
+    <script>
+        function validateForm() {
+            // Add additional logic if needed
+            return true;
+        }
+
+        function validateField(fieldName) {
+            // Reset border color and clear the "field is required" message
+            document.getElementById(fieldName).style.borderColor = '#ced4da';
+            document.getElementById('error' + fieldName.charAt(0).toUpperCase() + fieldName.slice(1)).innerHTML = '';
+
+            // Check if the field is empty when leaving the field
+            var fieldValue = document.getElementById(fieldName).value;
+            if (!fieldValue.trim()) {
+                document.getElementById(fieldName).style.borderColor = 'red';
+                document.getElementById('error' + fieldName.charAt(0).toUpperCase() + fieldName.slice(1)).innerHTML =
+                    'This field is required';
+            }
+
+            // Check if passwords match when leaving the password fields
+            if (fieldName === 'password' || fieldName === 'confirmPassword') {
+                var password = document.getElementById('password').value;
+                var confirmPassword = document.getElementById('confirmPassword').value;
+                if (!password.trim() || !confirmPassword.trim()) {
+                    document.getElementById('password').style.borderColor = 'red';
+                    document.getElementById('confirmPassword').style.borderColor = 'red';
+                    document.getElementById('errorPassword').innerHTML = 'This field is required';
+                    document.getElementById('errorConfirmPassword').innerHTML = 'This field is required';
+                } else if (password !== confirmPassword) {
+                    document.getElementById('errorPassword').innerHTML = 'Passwords do not match';
+                    document.getElementById('errorConfirmPassword').innerHTML = 'Passwords do not match';
+                    document.getElementById('password').style.borderColor = 'red';
+                    document.getElementById('confirmPassword').style.borderColor = 'red';
+                } else {
+                    document.getElementById('password').style.borderColor = 'green';
+                    document.getElementById('confirmPassword').style.borderColor = 'green';
+                    document.getElementById('errorPassword').innerHTML = '';
+                    document.getElementById('errorConfirmPassword').innerHTML = '';
+                }
+            }
+        }
+    </script>
+

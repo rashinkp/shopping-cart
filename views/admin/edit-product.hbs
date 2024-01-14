@@ -1,0 +1,87 @@
+<section>
+  <div class="container">
+    <div class="row">
+        <h2>Edit product</h2>
+      <div class="col-md-6">
+        <form action="/admin/edit-product/{{product._id}}"  method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              id="name"
+              aria-describedby="emailHelp"
+              placeholder="Enter product name"
+              value="{{product.name}}"
+            />
+          </div>
+
+            <div class="form-group">
+            <label for="exampleInputEmail1">Category</label>
+            <input
+              type="text"
+              name="category"
+              class="form-control"
+              id="category"
+              aria-describedby="emailHelp"
+              placeholder="Enter product category"
+              value="{{product.category}}"
+            />
+          </div>
+
+             <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            <input
+              type="text"
+              name="description"
+              class="form-control"
+              id="description"
+              aria-describedby="emailHelp"
+              placeholder="Enter Product datails"
+              value="{{product.description}}"
+            />
+          </div>
+
+
+           <div class="form-group">
+            <label for="exampleInputEmail1">Prise</label>
+            <input
+              type="number"
+              name="prise"
+              class="form-control"
+              id="prise"
+              aria-describedby="emailHelp"
+              placeholder="Enter product prise"
+              value="{{product.prise}}"
+            />
+          </div>
+
+
+           <div class="form-group">
+            <label for="exampleInputEmail1">Image</label>
+            <img class="p-3" id="imgView" src="/product-images/{{product._id}}.jpg" alt="Not supported" style="width: 100px; height:auto ;">
+            <input
+              type="file"
+              name="image"
+              class="form-control"
+              id="image"
+              aria-describedby="emailHelp"
+              placeholder="Select Image"
+              onchange="viewImage(event)"
+            />
+          </div>
+          
+          <button type="submit" class="btn btn-primary m-4">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+    function viewImage(event){
+        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+    } 
+</script>

@@ -1,0 +1,134 @@
+<link rel="stylesheet" href="/stylesheets/place-order.css">
+ 
+
+<section class="content">
+  <div class="container">
+  <div class="form-container">
+    <h2 class="text-center mb-4">Delivery and Payment</h2>
+
+    <form id="deliveryForm" method="POST"  novalidate >
+     <div class="row">
+        <div class="col-md-6">
+            <div class="form-group error-container">
+                <label for="address">Address</label>
+                <div class="input-container">
+                  <input type="text" class="form-control" id="address" name="address" required onblur="validateInput(this)">
+                  <div class="error-symbol" id="addressSymbol">&#9888;</div>
+                </div>
+                <div class="invalid-feedback">
+                  Please enter your address.
+                </div>
+                <div class="error-message" id="addressError">Please enter your address.</div>
+              </div>
+        
+              <div class="form-group error-container">
+                <label for="place">Place</label>
+                <div class="input-container">
+                  <input type="text" class="form-control" id="place" name="place" required onblur="validateInput(this)">
+                  <div class="error-symbol" id="placeSymbol">&#9888;</div>
+                </div>
+                <div class="invalid-feedback">
+                  Please enter the place.
+                </div>
+                <div class="error-message" id="placeError">Please enter the place.</div>
+              </div>
+        
+              <div class="form-group error-container">
+                <label for="state">State</label>
+                <div class="input-container">
+                  <select class="form-control" id="state" name="state" required onchange="populateDistricts()" onblur="validateInput(this)">
+                    <option value="" disabled selected>Select State</option>
+                    <!-- Add states dynamically using JavaScript or manually list them -->
+                  </select>
+                  <div class="error-symbol" id="stateSymbol">&#9888;</div>
+                </div>
+                <div class="invalid-feedback">
+                  Please select a state.
+                </div>
+                <div class="error-message" id="stateError">Please select a state.</div>
+              </div>
+        
+              <div class="form-group error-container">
+                <label for="district">District</label>
+                <div class="input-container">
+                  <select class="form-control" id="district" name="district" required onblur="validateInput(this)">
+                    <option value="" disabled selected>Select District</option>
+                    <!-- Districts will be populated dynamically based on the selected state -->
+                  </select>
+                  <div class="error-symbol" id="districtSymbol">&#9888;</div>
+                </div>
+                <div class="invalid-feedback">
+                  Please select a district.
+                </div>
+                <div class="error-message" id="districtError">Please select a district.</div>
+              </div>
+        
+              
+        
+              
+        </div>
+       <!--line here-->
+        <div class="col-md-6">
+            <div class="form-group error-container">
+                <label for="pinCode">Pin Code</label>
+                <div class="input-container">
+                  <input type="text" class="form-control" id="pinCode" name="pincode" pattern="[0-9]{6}" required oninput="validatePinCode(this)" onblur="validateInput(this)">
+                  <div class="error-symbol" id="pinCodeSymbol">&#9888;</div>
+                </div>
+                <div class="invalid-feedback">
+                  Please enter a valid 6-digit pin code.
+                </div>
+                <div class="error-message" id="pinCodeError">Please enter a valid 6-digit pin code.</div>
+              </div>
+            <div class="form-group error-container">
+                <label for="mobile">Mobile Number</label>
+                <div class="input-container">
+                  <input type="tel" class="form-control" id="mobile" name="mobile" pattern="[0-9]{10}" required oninput="validateMobileNumber(this)" onblur="validateInput(this)">
+                  <div class="error-symbol" id="mobileSymbol">&#9888;</div>
+                </div>
+                <div class="invalid-feedback">
+                  Please enter a valid 10-digit mobile number.
+                </div>
+                <div class="error-message" id="mobileError">Please enter a valid 10-digit mobile number.</div>
+              </div>
+            <div class="form-group error-container">
+          
+                <div class="form-group">
+                    <label >Select a payment option</label>
+                  <div class="radio-group">
+                    <input type="radio" id="cashOnDelivery" name="paymentMethod" value="COD" required>
+                    <label for="cashOnDelivery" class="ml-2" style="font-weight: normal;">Cash on Delivery</label>
+                  </div>
+                  <div class="radio-group">
+                    <input type="radio" id="onlinePayment" name="paymentMethod" value="Online" required>
+                    <label for="onlinePayment" class="ml-2" style="font-weight: normal;">Online Payment</label>
+                  </div>
+                  <div class="error-symbol" id="mobileSymbol">&#9888;</div>
+                </div>
+              </div>
+        </div>
+     </div>
+
+     
+     
+        <div class="label-total">
+            <label>Total Amount:</label>
+        </div>
+        <div class="total-amount">
+        <div id="amountDisplay">Rs. {{this.total}}</div>
+      </div>
+      <div id="errorMessages" class="error-message mt-3"></div>
+
+      <div class="btn-section">
+        <input type="hidden" name="userId" value="{{user._id}}" />
+        <button type="submit" class="btn btn-primary btn-block">Confirm</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</section>
+
+<script src="/javascripts/place-order.js">
+</script>
+

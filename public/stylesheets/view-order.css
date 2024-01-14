@@ -1,0 +1,29 @@
+
+body {
+    background-color: #fff;
+}
+
+.section-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.section-box:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.product-box img {
+    max-width: 100px;
+    border-radius: 8px;
+    margin-right: 10px;
+}

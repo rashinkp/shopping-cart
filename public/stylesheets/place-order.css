@@ -1,0 +1,70 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.invalid-input {
+  border: 1px solid red !important;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  display: none;
+}
+
+.error-container {
+  position: relative;
+}
+
+.error-symbol {
+  color: red;
+  font-size: 16px;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+.total-amount {
+  background-color: #eee;
+  padding: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+.label-total{
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.btn{
+    max-width: 300px;
+}
+.btn-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-group{
+    margin-bottom: 20px;
+}

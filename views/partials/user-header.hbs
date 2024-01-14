@@ -1,0 +1,185 @@
+<style>
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.top-section {
+  text-align: center;
+  background-color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-section a {
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: bold;
+  flex: 1;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif; /* Update the font-family */
+  position: relative;
+}
+
+.top-section a.btn:hover::before {
+  content: '';
+  position: absolute;
+  width: 100%; 
+  height: 5px;
+  background-color: #28a745; 
+  bottom: 0;
+  left: 1%; 
+  animation: underlineAnimation 0.5s forwards; 
+}
+
+@keyframes underlineAnimation {
+  from {
+    transform: scaleX(0); /* Start with no width (invisible) */
+  }
+  to {
+    transform: scaleX(1); /* Expand to full width */
+  }
+}
+
+.navbar {
+  text-align: center;
+  background-color: #fff;
+  padding: 10px 0;
+}
+
+.navbar-nav {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.navbar-nav .nav-link {
+  color: #2c3e50;
+  font-size: 18px;
+  margin: 0 10px;
+  transition: background-color 0.3s ease-in-out;
+  position: relative;
+}
+.badge{
+  color: #2c3e50;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #222f3b;
+}
+
+.navbar-nav .nav-link:hover::before {
+  content: '';
+  position: absolute;
+  width: 80%; /* Adjust the width as needed */
+  height: 5px;
+  background-color: #28a745;
+  bottom: 0;
+  left: 10%; /* Adjust the left position for centering */
+  animation: underlineAnimation 0.5s forwards; /* Animation definition */
+}
+
+.navbar-toggler {
+  color: #2c3e50;
+  border-color: #2c3e50;
+}
+
+.sign-in-up .btn {
+  transition: background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  background-color: white;
+  font-size: 16px;
+  border: none; /* Remove the border */
+}
+
+.sign-in-up .btn:hover {
+  
+  color: #28a745;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+    margin: 0;
+    background-color: #fff; /* White background color for mobile */
+  }
+
+  .navbar-nav .nav-link {
+    margin: 10px 0;
+    background-color: #fff; /* White background color for mobile */
+    color: #2c3e50; /* Change text color to match the brand color */
+  }
+
+  .top-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sign-in-up {
+    margin-top: 10px;
+  }
+
+  body {
+    padding-top: 56px; /* Adjust the value based on your navbar's height */
+  }
+
+  
+}
+
+</style>
+
+
+ <section class="fixed-top">
+  <div class="top-section">
+      <a href="#">My Shopping Cart</a>
+      <div class="sign-in-up">
+            {{#if user}}
+               <a href="/personal-details" class="btn btn-primary">
+              {{user.fname}}
+              </a>
+            {{else}}
+              <a href="/login" class="btn btn-primary">
+              Login
+              </a>
+            {{/if}}
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/products">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/cart">Cart<span class="badge badge-success" style="font-size: 1rem;" id="cart-count">{{this.cartCount}}</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/orders">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+ </section>
+

@@ -1,0 +1,40 @@
+.order-table {
+    margin-top: 20px;
+}
+
+.order-table th, .order-table td {
+    border: none;
+}
+
+.order-table th {
+    background-color: #f8f9fa;
+}
+
+.table-row:hover {
+    background-color: #f8f9fa;
+}
+
+.details-btn {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.details-btn:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+.total-amount{
+    color: green;
+    font-size: large;
+    font-weight: bold;
+}
+.product-box {
+    border: 1px solid #898888; /* Add borders for the box */
+    padding: 10px; /* Add padding for spacing inside the box */
+    margin-bottom: 5px; /* Add margin for spacing between boxes */
+    border-radius: 9px;
+}

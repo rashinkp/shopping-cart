@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="/stylesheets/orders.css">
+<section class="content">
+
+    
+
+
+<div class="container">
+    <h2 class="mt-4 mb-4">Order History</h2>
+
+    <table class="table table-bordered order-table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Products</th>
+            <th scope="col">Total</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Sample row, you can dynamically generate these rows based on your data -->
+{{#each orders}}
+  <tr class="table-row">
+    <th scope="row">{{@index}}</th>
+    <td>{{date}}</td>
+    <td>
+      <ul style="padding: 0;">
+        {{#each products}}
+          <div class="product-box">
+            <p>{{productDetails.name}}</p>
+        </div>
+        {{/each}}
+      </ul>
+    </td>
+   
+    <td ><span class="total-amount">{{totalAmount}}</span></td>
+    <td>{{status}}</td>
+    <td>
+      <a href="/view-order-details" class="btn details-btn" data-toggle="modal" data-target="#detailsModal">View Details</a>
+    </td>
+  </tr>
+{{/each}}
+
+        </tbody>
+    </table>
+</div>
+
+
+
+</section>

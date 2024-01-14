@@ -1,0 +1,110 @@
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-fluid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .profile-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 70%;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .details {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .details h2 {
+            margin-bottom: 20px;
+        }
+
+        .logout-btn, .edit-btn {
+            margin-top: 20px;
+        }
+
+        .logout-btn button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .logout-btn button:hover {
+            background-color: #c82333;
+        }
+
+        .edit-btn button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .edit-btn button:hover {
+            background-color: #218838;
+        }
+    </style>
+<section>
+
+    
+
+<div class="container-fluid">
+    <div class="profile-box">
+        <div class="profile-image">
+            <img src="https://placekitten.com/200/200" alt="Profile Image">
+        </div>
+        <div class="details">
+            <h2>Personal Details</h2>
+            <p><strong>Name:</strong> {{this.user.fname}} {{user.sname}}</p>
+            <p><strong>Age:</strong> {{calculateAge user.bday}}</p>
+            <p><strong>Sex:</strong> {{this.user.sex}}</p>
+            <p><strong>Email:</strong> {{this.user.email}}</p>
+            <p><strong>Mobile:</strong> {{this.user.mobile}}</p>
+        </div>
+        <div class="button-container">
+            <div class="edit-btn">
+                <button onclick="editProfile()">Edit</button>
+            </div>
+            <div class="logout-btn">
+                <button ><a href="/logout" style="text-decoration: none; color: white;">Logout</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</section>

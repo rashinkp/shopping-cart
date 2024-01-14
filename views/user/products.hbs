@@ -1,0 +1,103 @@
+    <style>
+        /* Custom styles */
+        .product-box {
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .product-box:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .search-input {
+            width: 70%;
+            padding: 8px;
+            border-radius: 4px 0 0 4px;
+            border: 1px solid #ced4da;
+        }
+
+        .search-icon {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px;
+            border: 1px solid #007bff;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+    </style>
+
+   <section class="content"> 
+     <div class="container mt-5">
+        <h2 class="text-center mb-4">Product List</h2>
+        <div class="search-bar mb-4">
+            <input type="text" class="form-control search-input" placeholder="Search items..." oninput="filterProducts()">
+            <div class="search-icon" onclick="filterProducts()">🔍</div>
+        </div>
+   
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price(Rs)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+            <tr class="product-box">
+            <td>
+                <img style="width: 70px; height: 70px;" src="/product-images/{{this._id}}.jpg" alt="Product Image" class="img-fluid product-image">
+            </td>
+            <td>{{this.name}}</td>
+            <td>{{this.category}}</td>
+            <td>{{this.prise}}</td>
+            <td><a href="/the-product/{{this._id}}" class="btn btn-primary">View Product</a></td>
+            </tr>
+            {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+        <!-- Search Bar -->
+   </section>
+        
+    <script>
+        function filterProducts() {
+            var input, filter, table, tbody, tr, td, i, txtValue;
+            input = document.querySelector('.search-input');
+            filter = input.value.toUpperCase();
+            table = document.querySelector('.table');
+            tbody = table.querySelector('tbody');
+            tr = tbody.getElementsByTagName('tr');
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName('td')[1]; // Change index based on the column you want to filter
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = '';
+                    } else {
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+

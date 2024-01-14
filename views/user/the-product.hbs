@@ -1,0 +1,118 @@
+
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .product-container {
+            margin: 50px;
+        }
+
+        .product-box {
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .product-container:hover .product-box {
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        transform: scale(1.02);
+    }
+
+        .product-image {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-details h3 {
+            margin-top: 0;
+        }
+
+        .product-details p {
+            color: #6c757d;
+        }
+
+        .price {
+            color: #007bff;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .add-to-cart-btn {
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+
+
+<section class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 product-container">
+                <div class="product-box">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-image">
+                                <img src="/product-images/{{this.product._id}}.jpg" alt="Product Image" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product-details">
+                                <h3 id="product-name">{{this.product.name}}</h3>
+                                <p><strong>Category:</strong> <span id="product-category">{{this.product.category}}</span></p>
+                                <p><strong>Description:</strong> {{this.product.description}}</p>
+                                <p class="price">Rs.{{this.product.prise}}</p>
+                                <a href="/add-to-cart/{{this.product._id}}" class="btn btn-primary">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+  // Fetch the product ID from the URL
+  const productId = window.location.pathname.split('/').pop();
+
+  // Now you have the product ID, you can make an AJAX request to fetch the product details
+  // For simplicity, I'm using a placeholder function `fetchProductDetails` - replace it with your actual code
+  fetchProductDetails(productId);
+
+  function fetchProductDetails(productId) {
+    // Make an AJAX request to your server to fetch the product details
+    // You can use fetch, axios, or any other library for this purpose
+    // Example using fetch:
+    fetch(`/api/products/${productId}`)
+      .then(response => response.json())
+      .then(product => {
+        // Update the product details on the page
+        document.getElementById('product-name').innerText = product.name;
+        document.getElementById('product-category').innerText = product.category;
+        // Update other details similarly
+      })
+      .catch(error => console.error('Error fetching product details:', error));
+  }
+</script>

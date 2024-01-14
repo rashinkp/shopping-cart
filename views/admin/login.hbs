@@ -1,0 +1,41 @@
+<section>
+  <div class="container mt-5" style="">
+    <h2>Admin Login</h2>
+    <form action="/admin/login" method="POST" style="width: 50%;" class="mt-4">
+    {{#if loginErr}}
+      <p class="error text-danger">{{loginErr}}</p>
+    {{else}}
+    {{/if}}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+        />
+        <small id="emailHelp" class="form-text text-muted">We'll never share
+          your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Password"
+        />
+      </div>
+      <div class="row" style="display: flex; justify-content: flex-end;">
+        
+      <button type="submit" class="btn btn-primary mt-4">Submit</button>
+      </div>
+      <div class="row mt-4" style="text-align: center;">
+        <a href="/admin/signup">Create an account?</a>
+      </div>
+    </form>
+  </div>
+</section>
